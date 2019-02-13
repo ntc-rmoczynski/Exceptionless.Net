@@ -7,7 +7,7 @@ using log4net.Core;
 
 namespace Exceptionless.Log4net {
     public static class ExceptionlessClientExtensions {
-        public static EventBuilder CreateFromLogEvent(this ExceptionlessClient client, LoggingEvent ev) {
+        public static IEventBuilder CreateFromLogEvent(this ExceptionlessClient client, LoggingEvent ev) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 

@@ -68,7 +68,7 @@ namespace Exceptionless {
         /// Adds the current request info to the event.
         /// </summary>
         /// <param name="builder">The event builder.</param>
-        public static EventBuilder AddRequestInfo(this EventBuilder builder) {
+        public static IEventBuilder AddRequestInfo(this IEventBuilder builder) {
             builder.Target.AddRequestInfo(builder.Client);
             return builder;
         }

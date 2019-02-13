@@ -125,7 +125,7 @@ namespace Exceptionless {
             return null;
         }
 
-        public static EventBuilder SetHttpContext(this EventBuilder builder, HttpContext context) {
+        public static IEventBuilder SetHttpContext(this IEventBuilder builder, HttpContext context) {
             builder.PluginContextData["HttpContext"] = context;
             return builder;
         }

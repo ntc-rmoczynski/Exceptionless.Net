@@ -35,8 +35,8 @@ namespace Exceptionless.Tests.Plugins {
             }
         }
 
-        private EventBuilder _randomEventBuilder;
-        private EventBuilder _fixedEventBuilder;
+        private IEventBuilder _randomEventBuilder;
+        private IEventBuilder _fixedEventBuilder;
 
         [GlobalSetup]
         public void Setup() {

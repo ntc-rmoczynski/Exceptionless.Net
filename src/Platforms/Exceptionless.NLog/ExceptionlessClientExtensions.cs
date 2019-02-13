@@ -7,7 +7,7 @@ using NLog;
 
 namespace Exceptionless.NLog {
     public static class ExceptionlessClientExtensions {
-        public static EventBuilder CreateFromLogEvent(this ExceptionlessClient client, LogEventInfo ev) {
+        public static IEventBuilder CreateFromLogEvent(this ExceptionlessClient client, LogEventInfo ev) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 

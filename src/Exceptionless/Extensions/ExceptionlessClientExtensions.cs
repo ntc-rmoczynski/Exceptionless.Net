@@ -95,7 +95,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="client">The client instance.</param>
         /// <param name="exception">The exception.</param>
-        public static EventBuilder CreateException(this ExceptionlessClient client, Exception exception) {
+        public static IEventBuilder CreateException(this ExceptionlessClient client, Exception exception) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 
@@ -173,7 +173,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="client">The client instance.</param>
         /// <param name="message">The log message.</param>
-        public static EventBuilder CreateLog(this ExceptionlessClient client, string message) {
+        public static IEventBuilder CreateLog(this ExceptionlessClient client, string message) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 
@@ -186,7 +186,7 @@ namespace Exceptionless {
         /// <param name="client">The client instance.</param>
         /// <param name="source">The log source.</param>
         /// <param name="message">The log message.</param>
-        public static EventBuilder CreateLog(this ExceptionlessClient client, string source, string message) {
+        public static IEventBuilder CreateLog(this ExceptionlessClient client, string source, string message) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 
@@ -200,7 +200,7 @@ namespace Exceptionless {
         /// <param name="source">The log source.</param>
         /// <param name="message">The log message.</param>
         /// <param name="level">The log level.</param>
-        public static EventBuilder CreateLog(this ExceptionlessClient client, string source, string message, string level) {
+        public static IEventBuilder CreateLog(this ExceptionlessClient client, string source, string message, string level) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 
@@ -219,7 +219,7 @@ namespace Exceptionless {
         /// <param name="source">The log source.</param>
         /// <param name="message">The log message.</param>
         /// <param name="level">The log level.</param>
-        public static EventBuilder CreateLog(this ExceptionlessClient client, string source, string message, LogLevel level) {
+        public static IEventBuilder CreateLog(this ExceptionlessClient client, string source, string message, LogLevel level) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 
@@ -232,7 +232,7 @@ namespace Exceptionless {
         /// <param name="client">The client instance.</param>S
         /// <param name="message">The log message.</param>
         /// <param name="level">The log level.</param>
-        public static EventBuilder CreateLog(this ExceptionlessClient client, string message, LogLevel level) {
+        public static IEventBuilder CreateLog(this ExceptionlessClient client, string message, LogLevel level) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 
@@ -244,7 +244,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="client">The client instance.</param>
         /// <param name="feature">The name of the feature that was used.</param>
-        public static EventBuilder CreateFeatureUsage(this ExceptionlessClient client, string feature) {
+        public static IEventBuilder CreateFeatureUsage(this ExceptionlessClient client, string feature) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 
@@ -268,7 +268,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="client">The client instance.</param>
         /// <param name="resource">The name of the resource that was not found.</param>
-        public static EventBuilder CreateNotFound(this ExceptionlessClient client, string resource) {
+        public static IEventBuilder CreateNotFound(this ExceptionlessClient client, string resource) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 
@@ -291,7 +291,7 @@ namespace Exceptionless {
         /// Creates a session start event.
         /// </summary>
         /// <param name="client">The client instance.</param>
-        public static EventBuilder CreateSessionStart(this ExceptionlessClient client) {
+        public static IEventBuilder CreateSessionStart(this ExceptionlessClient client) {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
 

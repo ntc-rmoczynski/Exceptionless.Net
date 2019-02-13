@@ -19,7 +19,7 @@ namespace Exceptionless {
         /// ExceptionlessClient.Default.
         /// </param>
         /// <returns></returns>
-        public static EventBuilder ToExceptionless(this Exception exception, ContextData pluginContextData = null, ExceptionlessClient client = null) {
+        public static IEventBuilder ToExceptionless(this Exception exception, ContextData pluginContextData = null, ExceptionlessClient client = null) {
             if (client == null)
                 client = ExceptionlessClient.Default;
 

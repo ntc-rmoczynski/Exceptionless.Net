@@ -218,7 +218,7 @@ namespace Exceptionless {
         /// information to add to the event data.
         /// </param>
         /// <returns>A new instance of <see cref="EventBuilder" />.</returns>
-        public EventBuilder CreateEvent(ContextData pluginContextData = null) {
+        public IEventBuilder CreateEvent(ContextData pluginContextData = null) {
             return new EventBuilder(new Event { Date = DateTimeOffset.Now }, this, pluginContextData);
         }
 

@@ -13,7 +13,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="builder">The event builder object.</param>
         /// <param name="identity">The user's identity that the event happened to.</param>
-        public static EventBuilder SetUserIdentity(this EventBuilder builder, string identity) {
+        public static IEventBuilder SetUserIdentity(this IEventBuilder builder, string identity) {
             builder.Target.SetUserIdentity(identity);
             return builder;
         }
@@ -24,7 +24,7 @@ namespace Exceptionless {
         /// <param name="builder">The event builder object.</param>
         /// <param name="identity">The user's identity that the event happened to.</param>
         /// <param name="name">The user's friendly name that the event happened to.</param>
-        public static EventBuilder SetUserIdentity(this EventBuilder builder, string identity, string name) {
+        public static IEventBuilder SetUserIdentity(this IEventBuilder builder, string identity, string name) {
             builder.Target.SetUserIdentity(identity, name);
             return builder;
         }
@@ -34,7 +34,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="builder">The event builder object.</param>
         /// <param name="userInfo">The user's identity that the event happened to.</param>
-        public static EventBuilder SetUserIdentity(this EventBuilder builder, UserInfo userInfo) {
+        public static IEventBuilder SetUserIdentity(this IEventBuilder builder, UserInfo userInfo) {
             builder.Target.SetUserIdentity(userInfo);
             return builder;
         }
@@ -45,7 +45,7 @@ namespace Exceptionless {
         /// <param name="builder">The event builder object.</param>
         /// <param name="emailAddress">The user's email address.</param>
         /// <param name="description">The user's description of the event.</param>
-        public static EventBuilder SetUserDescription(this EventBuilder builder, string emailAddress, string description) {
+        public static IEventBuilder SetUserDescription(this IEventBuilder builder, string emailAddress, string description) {
             builder.Target.SetUserDescription(emailAddress, description);
             return builder;
         }
@@ -55,7 +55,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="builder">The event builder object.</param>
         /// <param name="version">The version.</param>
-        public static EventBuilder SetVersion(this EventBuilder builder, string version) {
+        public static IEventBuilder SetVersion(this IEventBuilder builder, string version) {
             builder.Target.SetVersion(version);
             return builder;
         }
@@ -65,7 +65,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="builder">The event builder object.</param>
         /// <param name="signatureData">Key value pair that determines how the event is stacked.</param>
-        public static EventBuilder SetManualStackingInfo(this EventBuilder builder, IDictionary<string, string> signatureData) {
+        public static IEventBuilder SetManualStackingInfo(this IEventBuilder builder, IDictionary<string, string> signatureData) {
             builder.Target.SetManualStackingInfo(signatureData);
             return builder;
         }
@@ -76,7 +76,7 @@ namespace Exceptionless {
         /// <param name="builder">The event builder object.</param>
         /// <param name="title">The stack title.</param>
         /// <param name="signatureData">Key value pair that determines how the event is stacked.</param>
-        public static EventBuilder SetManualStackingInfo(this EventBuilder builder, string title, IDictionary<string, string> signatureData) {
+        public static IEventBuilder SetManualStackingInfo(this IEventBuilder builder, string title, IDictionary<string, string> signatureData) {
             builder.Target.SetManualStackingInfo(title, signatureData);
             return builder;
         }
@@ -86,7 +86,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="builder">The event builder object.</param>
         /// <param name="manualStackingKey">The manual stacking key.</param>
-        public static EventBuilder SetManualStackingKey(this EventBuilder builder, string manualStackingKey) {
+        public static IEventBuilder SetManualStackingKey(this IEventBuilder builder, string manualStackingKey) {
             builder.Target.SetManualStackingKey(manualStackingKey);
             return builder;
         }
@@ -97,7 +97,7 @@ namespace Exceptionless {
         /// <param name="builder">The event builder object.</param>
         /// <param name="title">The stack title.</param>
         /// <param name="manualStackingKey">The manual stacking key.</param>
-        public static EventBuilder SetManualStackingKey(this EventBuilder builder, string title, string manualStackingKey) {
+        public static IEventBuilder SetManualStackingKey(this IEventBuilder builder, string title, string manualStackingKey) {
             builder.Target.SetManualStackingKey(title, manualStackingKey);
             return builder;
         }
@@ -109,7 +109,7 @@ namespace Exceptionless {
         /// <param name="builder">The event builder object.</param>
         /// <param name="listener">The listener.</param>
         /// <param name="maxEntriesToInclude"></param>
-        public static EventBuilder AddRecentTraceLogEntries(this EventBuilder builder, Diagnostics.ExceptionlessTraceListener listener = null, int maxEntriesToInclude = TraceLogPlugin.DefaultMaxEntriesToInclude) {
+        public static IEventBuilder AddRecentTraceLogEntries(this IEventBuilder builder, Diagnostics.ExceptionlessTraceListener listener = null, int maxEntriesToInclude = TraceLogPlugin.DefaultMaxEntriesToInclude) {
             TraceLogPlugin.AddRecentTraceLogEntries(builder.Target, listener, maxEntriesToInclude);
             return builder;
         }

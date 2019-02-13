@@ -82,7 +82,7 @@ namespace Exceptionless {
         /// </summary>
         /// <param name="builder">The event builder.</param>
         /// <param name="context">The nancy context to gather information from.</param>
-        public static EventBuilder AddRequestInfo(this EventBuilder builder, NancyContext context) {
+        public static IEventBuilder AddRequestInfo(this IEventBuilder builder, NancyContext context) {
             builder.Target.AddRequestInfo(context);
             return builder;
         }
