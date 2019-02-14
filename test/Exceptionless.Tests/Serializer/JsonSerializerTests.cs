@@ -179,7 +179,7 @@ namespace Exceptionless.Tests.Serializer {
         [Fact]
         public void WillDeserializeReferenceIds() {
             var serializer = GetSerializer();
-            var ev = (Event)serializer.Deserialize(@"{""reference_id"": ""123"" }", typeof(Event));
+            var ev = (IEvent)serializer.Deserialize(@"{""reference_id"": ""123"" }", typeof(IEvent));
             Assert.Equal("123", ev.ReferenceId);
         }
 

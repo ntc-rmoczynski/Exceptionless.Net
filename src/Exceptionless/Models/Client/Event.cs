@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Exceptionless.Models {
-    public class Event : IData {
+    public class Event : IEvent {
         public Event() {
             Tags = new TagSet();
             Data = new DataDictionary();
@@ -58,7 +58,7 @@ namespace Exceptionless.Models {
         /// </summary>
         public string ReferenceId { get; set; }
 
-        protected bool Equals(Event other) {
+        protected bool Equals(IEvent other) {
             return string.Equals(Type, other.Type) && string.Equals(Source, other.Source) && Tags.CollectionEquals(other.Tags) && string.Equals(Message, other.Message) && string.Equals(Geo, other.Geo) && Value == other.Value && Equals(Data, other.Data);
         }
 
@@ -69,7 +69,7 @@ namespace Exceptionless.Models {
                 return true;
             if (obj.GetType() != this.GetType())
                 return false;
-            return Equals((Event)obj);
+            return Equals((IEvent)obj);
         }
 
         private static readonly List<string> _exclusions = new List<string> { KnownDataKeys.TraceLog }; 

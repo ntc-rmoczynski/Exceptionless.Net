@@ -4,7 +4,7 @@ using Exceptionless.Plugins;
 
 namespace Exceptionless {
     public abstract class EventSubmissionEventArgsBase : EventArgs {
-        protected EventSubmissionEventArgsBase(ExceptionlessClient client, Event data, ContextData pluginContextData) {
+        protected EventSubmissionEventArgsBase(ExceptionlessClient client, IEvent data, ContextData pluginContextData) {
             Client = client;
             Event = data;
             PluginContextData = pluginContextData;
@@ -18,7 +18,7 @@ namespace Exceptionless {
         /// <summary>
         /// The event that is being submitted.
         /// </summary>
-        public Event Event { get; private set; }
+        public IEvent Event { get; private set; }
 
         /// <summary>
         /// Any contextual data objects to be used by Exceptionless plugins to gather default

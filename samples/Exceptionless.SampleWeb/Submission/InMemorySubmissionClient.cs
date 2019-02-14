@@ -10,7 +10,7 @@ namespace Exceptionless.SampleWeb {
         private readonly Dictionary<string, object> _userDescriptionContainer = new Dictionary<string, object>();
         private readonly Dictionary<string, DateTime> _heartbeatContainer = new Dictionary<string, DateTime>();
 
-        public SubmissionResponse PostEvents(IEnumerable<Event> events, ExceptionlessConfiguration config, IJsonSerializer serializer) {
+        public SubmissionResponse PostEvents(IEnumerable<IEvent> events, ExceptionlessConfiguration config, IJsonSerializer serializer) {
             foreach (Event e in events) {
                 string data = serializer.Serialize(e);
                 string referenceId = !string.IsNullOrWhiteSpace(e.ReferenceId) ? e.ReferenceId : Guid.NewGuid().ToString("D");

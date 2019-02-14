@@ -8,12 +8,12 @@ using Exceptionless.Submission;
 namespace Exceptionless.Tests.Utility {
     public class InMemorySubmissionClient : ISubmissionClient {
         public InMemorySubmissionClient() {
-            Events = new List<Event>();
+            Events = new List<IEvent>();
         }
 
-        public List<Event> Events { get; private set; } 
+        public List<IEvent> Events { get; private set; } 
 
-        public SubmissionResponse PostEvents(IEnumerable<Event> events, ExceptionlessConfiguration config, IJsonSerializer serializer) {
+        public SubmissionResponse PostEvents(IEnumerable<IEvent> events, ExceptionlessConfiguration config, IJsonSerializer serializer) {
             var data = events.ToList();
             data.ForEach(e => {
                 if (e.Date == DateTimeOffset.MinValue)

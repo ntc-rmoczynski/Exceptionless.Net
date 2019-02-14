@@ -105,7 +105,7 @@ namespace Exceptionless {
         /// <param name="ev">The event model.</param>
         /// <param name="context">The http context to gather information from.</param>
         /// <param name="config">The config.</param>
-        public static Event AddRequestInfo(this Event ev, HttpContext context, ExceptionlessConfiguration config = null) {
+        public static IEvent AddRequestInfo(this IEvent ev, HttpContext context, ExceptionlessConfiguration config = null) {
             if (context == null)
                 return ev;
 

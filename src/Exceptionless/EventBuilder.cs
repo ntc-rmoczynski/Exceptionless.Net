@@ -5,7 +5,7 @@ using Exceptionless.Models;
 
 namespace Exceptionless {
     public class EventBuilder : IEventBuilder {
-        public EventBuilder(Event ev, ExceptionlessClient client = null, ContextData pluginContextData = null) {
+        public EventBuilder(IEvent ev, ExceptionlessClient client = null, ContextData pluginContextData = null) {
             Client = client ?? ExceptionlessClient.Default;
             Target = ev;
             PluginContextData = pluginContextData ?? new ContextData();
@@ -19,7 +19,7 @@ namespace Exceptionless {
 
         public ExceptionlessClient Client { get; set; }
 
-        public Event Target { get; private set; }
+        public IEvent Target { get; private set; }
 
         /// <summary>
         /// Sets the event type.

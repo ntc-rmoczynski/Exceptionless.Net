@@ -13,15 +13,15 @@ namespace Exceptionless.Tests.Utility {
             return new DefaultJsonSerializer();
         }
 
-        private static Event GetEvent(string fileName) {
+        private static IEvent GetEvent(string fileName) {
             string json = File.ReadAllText(fileName);
             var serializer = GetSerializer();
-            var ev = serializer.Deserialize<Event>(json);
+            var ev = serializer.Deserialize<IEvent>(json);
             ev.Data[Event.KnownDataKeys.Error] = ev.Data.GetValue<Error>(Event.KnownDataKeys.Error);
             return ev;
         }
         
-        public static IEnumerable<Event> GetEvents() {
+        public static IEnumerable<IEvent> GetEvents() {
             return Directory.EnumerateFiles(@"..\..\..\ErrorData", "*.json").Select(GetEvent);
         }
     }

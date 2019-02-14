@@ -147,7 +147,7 @@ namespace Exceptionless.Tests {
         public class MySubmissionClient : ISubmissionClient {
             public int SubmittedEvents { get; private set; }
 
-            public SubmissionResponse PostEvents(IEnumerable<Event> events, ExceptionlessConfiguration config, IJsonSerializer serializer) {
+            public SubmissionResponse PostEvents(IEnumerable<IEvent> events, ExceptionlessConfiguration config, IJsonSerializer serializer) {
                 SubmittedEvents += events.Count();
                 return new SubmissionResponse(202);
             }

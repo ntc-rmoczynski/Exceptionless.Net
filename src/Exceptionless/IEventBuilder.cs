@@ -13,7 +13,7 @@ namespace Exceptionless {
         /// </summary>
         ContextData PluginContextData { get; }
 
-        Event Target { get; }
+        IEvent Target { get; }
         
         /// <summary>
         /// Adds the object to extended data. Use either <paramref name="excludedPropertyNames" /> or

@@ -161,7 +161,7 @@ namespace Exceptionless {
         /// Any contextual data objects to be used by Exceptionless plugins to gather default
         /// information for inclusion in the report information.
         /// </param>
-        public void SubmitEvent(Event ev, ContextData pluginContextData = null) {
+        public void SubmitEvent(IEvent ev, ContextData pluginContextData = null) {
             if (ev == null)
                 throw new ArgumentNullException("ev");
 
@@ -235,7 +235,7 @@ namespace Exceptionless {
         /// </summary>
         public event EventHandler<EventSubmittingEventArgs> SubmittingEvent;
 
-        protected internal bool OnSubmittingEvent(Event ev, ContextData pluginContextData) {
+        protected internal bool OnSubmittingEvent(IEvent ev, ContextData pluginContextData) {
             var args = new EventSubmittingEventArgs(this, ev, pluginContextData);
             OnSubmittingEvent(args);
             return !args.Cancel;

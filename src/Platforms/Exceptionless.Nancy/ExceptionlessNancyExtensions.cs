@@ -68,7 +68,7 @@ namespace Exceptionless {
             return RequestInfoCollector.Collect(context, config);
         }
 
-        public static Event AddRequestInfo(this Event ev, NancyContext context) {
+        public static IEvent AddRequestInfo(this IEvent ev, NancyContext context) {
             if (context == null)
                 return ev;
 

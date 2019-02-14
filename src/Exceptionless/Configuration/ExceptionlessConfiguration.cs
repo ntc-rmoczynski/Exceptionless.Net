@@ -33,7 +33,7 @@ namespace Exceptionless {
         private TimeSpan? _updateSettingsWhenIdleInterval;
         private readonly List<string> _exclusions = new List<string>();
         private readonly List<string> _userAgentBotPatterns = new List<string>();
-        private readonly List<Func<Event, bool>> _eventExclusions = new List<Func<Event, bool>>();
+        private readonly List<Func<IEvent, bool>> _eventExclusions = new List<Func<IEvent, bool>>();
 
         public ExceptionlessConfiguration(IDependencyResolver resolver) {
             if (resolver == null)
@@ -342,7 +342,7 @@ namespace Exceptionless {
         /// <summary>
         /// A list of event exclusion callbacks that will keep events from being submitted.
         /// </summary>
-        public IEnumerable<Func<Event, bool>> EventExclusions {
+        public IEnumerable<Func<IEvent, bool>> EventExclusions {
             get { return _eventExclusions; }
         }
 
@@ -350,7 +350,7 @@ namespace Exceptionless {
         /// Add an event exclusion callback. If the function returns false for a specific event, that event will not be submitted.
         /// </summary>
         /// <param name="eventExclusionCallback">The callback to call to check to see if an event should be excluded.</param>
-        public void AddEventExclusion(Func<Event, bool> eventExclusionCallback) {
+        public void AddEventExclusion(Func<IEvent, bool> eventExclusionCallback) {
             if (eventExclusionCallback != null)
                 _eventExclusions.Add(eventExclusionCallback);
         }

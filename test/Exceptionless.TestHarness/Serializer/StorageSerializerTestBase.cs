@@ -48,11 +48,11 @@ namespace Exceptionless.Tests.Serializer
 
         private void AssertEventSerialize(Event evt) {
             var serializer = GetSerializer(_resolver);
-            Event newEvent;
+            IEvent newEvent;
             using (var memory = new MemoryStream()) {
                 serializer.Serialize(evt, memory);
                 memory.Position = 0;
-                newEvent = serializer.Deserialize<Event>(memory);
+                newEvent = serializer.Deserialize<IEvent>(memory);
             }
 
             Assert.Equal(evt, newEvent);

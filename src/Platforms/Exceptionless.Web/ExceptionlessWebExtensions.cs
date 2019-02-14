@@ -37,7 +37,7 @@ namespace Exceptionless {
         /// <param name="ev">The event model.</param>
         /// <param name="client">The client.</param>
         /// <param name="context">The http context to gather information from.</param>
-        public static Event AddRequestInfo(this Event ev, ExceptionlessClient client, HttpContext context) {
+        public static IEvent AddRequestInfo(this IEvent ev, ExceptionlessClient client, HttpContext context) {
             if (context == null)
                 return ev;
 
@@ -52,7 +52,7 @@ namespace Exceptionless {
         /// <param name="ev">The event model.</param>
         /// <param name="client">The client.</param>
         /// <param name="context">The http context to gather information from.</param>
-        public static Event AddRequestInfo(this Event ev, ExceptionlessClient client, HttpContextBase context = null) {
+        public static IEvent AddRequestInfo(this IEvent ev, ExceptionlessClient client, HttpContextBase context = null) {
             if (context == null && HttpContext.Current != null)
                 context = HttpContext.Current.ToWrapped();
 

@@ -8,9 +8,9 @@ using Exceptionless.Utility;
 namespace Exceptionless.Dialogs {
     public sealed partial class CrashReportForm : Form {
         public ExceptionlessClient Client { get; internal set; }
-        public Event Event { get; internal set; }
+        public IEvent Event { get; internal set; }
         
-        public CrashReportForm(ExceptionlessClient client, Event ev) {
+        public CrashReportForm(ExceptionlessClient client, IEvent ev) {
             InitializeComponent();
 
             Client = client;

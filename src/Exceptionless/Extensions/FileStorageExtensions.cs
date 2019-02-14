@@ -9,7 +9,7 @@ namespace Exceptionless.Extensions {
     public static class FileStorageExtensions {
         private static readonly object _lockObject = new object();
 
-        public static void Enqueue(this IObjectStorage storage, string queueName, Event ev) {
+        public static void Enqueue(this IObjectStorage storage, string queueName, IEvent ev) {
             storage.SaveObject(Path.Combine(queueName, "q", Guid.NewGuid().ToString("N") + ".0.json"), ev);
         }
 
@@ -95,8 +95,8 @@ namespace Exceptionless.Extensions {
                 storage.ReleaseFile(file);
         }
 
-        public static IList<Tuple<ObjectInfo, Event>> GetEventBatch(this IObjectStorage storage, string queueName, IJsonSerializer serializer, int batchSize = 50, DateTime? maxCreatedDate = null) {
-            var events = new List<Tuple<ObjectInfo, Event>>();
+        public static IList<Tuple<ObjectInfo, IEvent>> GetEventBatch(this IObjectStorage storage, string queueName, IJsonSerializer serializer, int batchSize = 50, DateTime? maxCreatedDate = null) {
+            var events = new List<Tuple<ObjectInfo, IEvent>>();
 
             lock (_lockObject) {
                 foreach (var file in storage.GetQueueFiles(queueName, batchSize * 5, maxCreatedDate)) {
@@ -108,7 +108,7 @@ namespace Exceptionless.Extensions {
                     } catch {}
 
                     try {
-                        var ev = storage.GetObject<Event>(file.Path);
+                        var ev = storage.GetObject<IEvent>(file.Path);
                         events.Add(Tuple.Create(file, ev));
                         if (events.Count == batchSize)
                             break;
@@ -125,12 +125,12 @@ namespace Exceptionless.Extensions {
                 storage.DeleteObject(file.Path);
         }
 
-        public static void DeleteBatch(this IObjectStorage storage, IList<Tuple<ObjectInfo, Event>> batch) {
+        public static void DeleteBatch(this IObjectStorage storage, IList<Tuple<ObjectInfo, IEvent>> batch) {
             foreach (var item in batch)
                 storage.DeleteObject(item.Item1.Path);
         }
 
-        public static void ReleaseBatch(this IObjectStorage storage, IList<Tuple<ObjectInfo, Event>> batch) {
+        public static void ReleaseBatch(this IObjectStorage storage, IList<Tuple<ObjectInfo, IEvent>> batch) {
             foreach (var item in batch)
                 storage.ReleaseFile(item.Item1);
         }

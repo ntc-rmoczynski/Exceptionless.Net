@@ -21,7 +21,7 @@ namespace Exceptionless.Plugins.Default {
                 ctx.SetException(ex);
 
                 var serializer = context.Resolver.GetJsonSerializer();
-                context.Client.SubmitEvent(serializer.Deserialize(serializer.Serialize(context.Event), typeof(Event)) as Event, ctx);
+                context.Client.SubmitEvent(serializer.Deserialize(serializer.Serialize(context.Event), typeof(IEvent)) as IEvent, ctx);
             }
 
             context.Cancel = true;

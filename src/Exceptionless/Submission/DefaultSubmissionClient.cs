@@ -25,7 +25,7 @@ namespace Exceptionless.Submission {
             _client = new Lazy<HttpClient>(() => CreateHttpClient(config));
         }
 
-        public SubmissionResponse PostEvents(IEnumerable<Event> events, ExceptionlessConfiguration config, IJsonSerializer serializer) {
+        public SubmissionResponse PostEvents(IEnumerable<IEvent> events, ExceptionlessConfiguration config, IJsonSerializer serializer) {
             if (!config.IsValid)
                 return new SubmissionResponse(500, message: "Invalid client configuration settings");
 

@@ -4,7 +4,7 @@ using Exceptionless.Models;
 
 namespace Exceptionless {
     public class EventSubmittingEventArgs : EventSubmissionEventArgsBase {
-        public EventSubmittingEventArgs(ExceptionlessClient client, Event data, ContextData pluginContextData) : base(client, data, pluginContextData) {}
+        public EventSubmittingEventArgs(ExceptionlessClient client, IEvent data, ContextData pluginContextData) : base(client, data, pluginContextData) {}
         /// <summary>
         /// Wether the event should be canceled.
         /// </summary>

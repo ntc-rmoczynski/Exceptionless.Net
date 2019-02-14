@@ -114,7 +114,7 @@ namespace Exceptionless.Tests.Configuration {
             };
 
             var submissionClient = new Mock<ISubmissionClient>();
-            submissionClient.Setup(m => m.PostEvents(It.IsAny<IEnumerable<Event>>(), config, It.IsAny<IJsonSerializer>()))
+            submissionClient.Setup(m => m.PostEvents(It.IsAny<IEnumerable<IEvent>>(), config, It.IsAny<IJsonSerializer>()))
                 .Callback(() => SettingsManager.CheckVersion(1, config))
                 .Returns(() => new SubmissionResponse(202, "Accepted"));
             submissionClient.Setup(m => m.GetSettings(config, 0, It.IsAny<IJsonSerializer>()))

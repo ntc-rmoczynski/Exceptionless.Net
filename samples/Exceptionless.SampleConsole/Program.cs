@@ -285,7 +285,7 @@ namespace Exceptionless.SampleConsole {
             }
         }
 
-        private static void SendContinuousEvents(int delay, CancellationToken token, int maxEvents = Int32.MaxValue, int maxDaysOld = 90, Event ev = null) {
+        private static void SendContinuousEvents(int delay, CancellationToken token, int maxEvents = Int32.MaxValue, int maxDaysOld = 90, IEvent ev = null) {
             Console.SetCursorPosition(0, OPTIONS_MENU_LINE_COUNT + 2);
             Console.WriteLine("Press 's' to stop sending.");
             int eventCount = 0;
@@ -315,7 +315,7 @@ namespace Exceptionless.SampleConsole {
         }
 
         private static readonly RandomEventGenerator _rnd = new RandomEventGenerator();
-        private static void SendEvent(Event ev = null, bool writeToConsole = true) {
+        private static void SendEvent(IEvent ev = null, bool writeToConsole = true) {
             _rnd.MinDate = DateTime.Now.Subtract(_dateSpans[_dateSpanIndex]);
             _rnd.MaxDate = DateTime.Now;
 
@@ -345,7 +345,7 @@ namespace Exceptionless.SampleConsole {
             int eventCount = 0;
             foreach (string file in Directory.GetFiles(path)) {
                 var serializer = DependencyResolver.Default.GetJsonSerializer();
-                var e = serializer.Deserialize<Event>(file);
+                var e = serializer.Deserialize<IEvent>(file);
                 ExceptionlessClient.Default.SubmitEvent(e);
 
                 eventCount++;

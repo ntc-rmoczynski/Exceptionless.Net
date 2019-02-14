@@ -36,7 +36,7 @@ namespace Exceptionless.Queue {
             _queueTimer = new Timer(OnProcessQueue, null, queueStartDelay ?? TimeSpan.FromSeconds(2), _processQueueInterval);
         }
 
-        public void Enqueue(Event ev) {
+        public void Enqueue(IEvent ev) {
             if (AreQueuedItemsDiscarded) {
                 _log.Info(typeof(ExceptionlessClient), "Queue items are currently being discarded. The event will not be queued.");
                 return;

@@ -39,7 +39,7 @@ namespace Exceptionless.Plugins.Default {
         /// <param name="ev">The event model.</param>
         /// <param name="listener">The listener.</param>
         /// <param name="maxEntriesToInclude"></param>
-        public static void AddRecentTraceLogEntries(Event ev, ExceptionlessTraceListener listener = null, int maxEntriesToInclude = DefaultMaxEntriesToInclude) {
+        public static void AddRecentTraceLogEntries(IEvent ev, ExceptionlessTraceListener listener = null, int maxEntriesToInclude = DefaultMaxEntriesToInclude) {
             if (ev.Data.ContainsKey(Event.KnownDataKeys.TraceLog))
                 return;
 

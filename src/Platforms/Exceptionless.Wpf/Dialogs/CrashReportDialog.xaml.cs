@@ -12,9 +12,9 @@ namespace Exceptionless.Dialogs {
     /// </summary>
     public partial class CrashReportDialog : Window {
         public ExceptionlessClient Client { get; internal set; }
-        public Event Event { get; internal set; }
+        public IEvent Event { get; internal set; }
 
-        public CrashReportDialog(ExceptionlessClient client, Event ev) {
+        public CrashReportDialog(ExceptionlessClient client, IEvent ev) {
             InitializeComponent();
 
             Client = client;

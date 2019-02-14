@@ -9,7 +9,7 @@ using Exceptionless.Tests.Utility;
 
 namespace Exceptionless.Tests.Plugins {
     public class DeduplicationBenchmarks {
-        private readonly List<Event> _events;
+        private readonly List<IEvent> _events;
         private readonly ExceptionlessClient _client;
         private readonly ErrorPlugin _errorPlugin;
         private readonly DuplicateCheckerPlugin _duplicateCheckerPlugin;

@@ -9,8 +9,8 @@ namespace Exceptionless.Helpers {
         public DateTime? MinDate { get; set; }
         public DateTime? MaxDate { get; set; }
 
-        public List<Event> Generate(int count) {
-            var events = new List<Event>();
+        public List<IEvent> Generate(int count) {
+            var events = new List<IEvent>();
             for (int i = 0; i < count; i++)
                 events.Add(Generate());
 
@@ -35,7 +35,7 @@ namespace Exceptionless.Helpers {
             return ev;
         }
 
-        public void PopulateEvent(Event ev) {
+        public void PopulateEvent(IEvent ev) {
             if (MinDate.HasValue || MaxDate.HasValue)
                 ev.Date = RandomData.GetDateTime(MinDate ?? DateTime.MinValue, MaxDate ?? DateTime.MaxValue);
 
